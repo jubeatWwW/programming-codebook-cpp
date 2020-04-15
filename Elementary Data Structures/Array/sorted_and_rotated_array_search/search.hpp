@@ -46,6 +46,7 @@ namespace sorted_and_rotated_array_search {
         return bsearch(arr, l, (mid - 1), target);
     }
 
+    // https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
     template<typename T, typename LN = int>
     LN single(T arr[], LN n, T target) {
         LN pivot = find_pivot(arr, 0, n - 1);
@@ -66,6 +67,7 @@ namespace sorted_and_rotated_array_search {
         return bsearch(arr, (pivot + 1), n - 1, target);
     }
 
+    // https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
     template<typename T, typename LN = int>
     LN improved_search(T arr[], LN l, LN h, T target) {
         if (l > h) {
@@ -94,6 +96,65 @@ namespace sorted_and_rotated_array_search {
     template<typename T, typename LN = int>
     LN single_improved(T arr[], LN n, T target) {
         improved_search(arr, 0, n - 1, target);
+    }
+
+    // https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/
+    template<typename T, typename LN = int>
+    bool pair_in_sorted_rotated(T arr[], LN n, T sum) {
+        int l, r;
+        LN pivot = find_pivot(arr, 0, n - 1);
+        if (pivot < 0) {
+            l = 0;
+            r = n - 1;
+        } else {
+            l = (pivot + 1) % n;
+            r = pivot;
+        }
+
+        while(l != r) {
+            if (arr[l] + arr[r] == sum) {
+                return true;
+            }
+            if (arr[l] + arr[r] < sum) {
+                l = (l + 1) % n;
+            } else {
+                r = (n + r - 1) % n;
+            }
+        }
+        return false;
+    }
+
+    // https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/
+    template<typename T, typename LN = int>
+    LN pair_in_sorted_rotated_count(T arr[], LN n, T sum) {
+        int l, r;
+        LN pivot = find_pivot(arr, 0, n - 1);
+        if (pivot < 0) {
+            l = 0;
+            r = n - 1;
+        } else {
+            l = (pivot + 1) % n;
+            r = pivot;
+        }
+        
+        int cnt = 0;
+        while(l != r) {
+            if (arr[l] + arr[r] == sum) {
+                cnt += 1;
+                if ((l + 1) % n == r) {
+                    return cnt;
+                }
+
+                l = (l + 1) % n;
+                r = (n + r - 1) % n;
+            }
+            if (arr[l] + arr[r] < sum) {
+                l = (l + 1) % n;
+            } else {
+                r = (n + r - 1) % n;
+            }
+        }
+        return false;
     }
 }
 

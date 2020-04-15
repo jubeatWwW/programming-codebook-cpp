@@ -19,6 +19,7 @@ namespace array_rotation {
     template<typename T>
     using func_map = unordered_map<string, func_type<T>>;
 
+    // https://www.geeksforgeeks.org/array-rotation/
     MAKE_FUNC(using_temp_array) {
         d = d % n;
 
@@ -36,6 +37,7 @@ namespace array_rotation {
         }
     }
 
+    // https://www.geeksforgeeks.org/array-rotation/
     MAKE_FUNC(one_by_one) {
         d = d % n;
 
@@ -53,6 +55,7 @@ namespace array_rotation {
         return b == 0 ? a : gcd(b, a % b);
     }
 
+    // https://www.geeksforgeeks.org/array-rotation/
     MAKE_FUNC(juggling) {
         d = d % n;
         LN split_set = gcd(n, d);
@@ -80,6 +83,7 @@ namespace array_rotation {
         }
     }
 
+    // https://www.geeksforgeeks.org/program-for-array-rotation-continued-reversal-algorithm/
     MAKE_FUNC(reversal) {
         d = d % n;
 
@@ -95,6 +99,7 @@ namespace array_rotation {
         }
     }
 
+    // https://www.geeksforgeeks.org/block-swap-algorithm-for-array-rotation/
     MAKE_FUNC(block_swap) {
         if (d == 0 || d == n) {
             return;
