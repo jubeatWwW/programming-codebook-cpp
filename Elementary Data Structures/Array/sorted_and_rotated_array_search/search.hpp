@@ -212,6 +212,13 @@ namespace sorted_and_rotated_array_search {
         }
         return sum;
     }
+
+    // https://www.geeksforgeeks.org/find-rotation-count-rotated-sorted-array/
+    template<typename T, typename LN = int>
+    LN rotation_count(T arr[], LN n) {
+        LN pivot = find_pivot(arr, 0, n - 1);
+        return pivot + 1;
+    }
 }
 
 #endif
