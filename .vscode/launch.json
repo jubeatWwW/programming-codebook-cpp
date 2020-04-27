@@ -8,7 +8,7 @@
       "name": "g++ - Build and debug active file",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/Elementary Data Structures/Array/array_exec",
+      "program": "${workspaceFolder}/ElementaryDataStructures/Array/bazel-bin/array_exec",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
