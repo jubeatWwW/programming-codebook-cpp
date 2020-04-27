@@ -1,0 +1,13 @@
+{
+  "tasks": [
+    {
+      "label": "build-debug",
+      "command": "bazel build //:array_exec",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/ElementaryDataStructures/Array/"
+      }
+    }
+  ],
+  "version": "2.0.0"
+}

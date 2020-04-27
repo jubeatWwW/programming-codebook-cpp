@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+bazel-*
+bazel-bazel-test
+bazel-bin
+bazel-genfiles
+bazel-out
+bazel-testlogs
+
+array_exec
