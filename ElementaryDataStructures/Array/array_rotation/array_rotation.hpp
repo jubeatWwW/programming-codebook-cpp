@@ -145,6 +145,11 @@ namespace array_rotation {
         { "reversal", &reversal },
         { "block_swap", &block_swap },
     };
+
+    template<typename T, typename LN = int>
+    void right_rotation(string name, T arr[], LN d, LN n) {
+        methods[name](arr, n - d, n);
+    }
 }
  
 #endif
