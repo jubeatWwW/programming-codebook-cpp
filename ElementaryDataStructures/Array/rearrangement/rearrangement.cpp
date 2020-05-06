@@ -191,4 +191,46 @@ namespace rearrangement {
         }
         return swap_count;
     }
+
+    // https://www.geeksforgeeks.org/rearrange-positive-negative-numbers-using-inbuilt-sort-function/
+    template<class T, class LN = int>
+    void rearrange_positive_negative_separated_inbuilt_sort(T arr[], LN n) {
+        sort(arr, arr + n, [](T a, T b) {
+            return (a < 0 && b > 0) || ((a == 0 || b == 0) && a < b);
+        });
+    }
+
+    // https://www.geeksforgeeks.org/rearrange-array-such-that-even-positioned-are-greater-than-odd/
+    template<class T, class LN = int>
+    void rearrange_even_greater_than_odd(T arr[], LN n) {
+        sort(arr, arr + n);
+
+        int start = 1;
+        int end = n % 2 ? n - 1 : n - 2;
+
+        while(start <= end) {
+            swap(arr + start, arr + end);
+            start += 2;
+            end -= 2;
+        }
+    }
+
+    // https://www.geeksforgeeks.org/rearrange-array-order-smallest-largest-2nd-smallest-2nd-largest/
+    template<class T, class LN = int>
+    void rearrange_sort_and_display_between_interval(T arr[], LN n) {
+        sort(arr, arr + n);
+
+        T tmp[n];
+        LN mid = n / 2;
+        LN s = 0;
+
+        for (LN i = 0, j = n - 1;
+            i <= mid || j > mid; i += 1, j -= 1) {
+            tmp[s] = arr[i];
+            tmp[s + 1] = arr[j];
+            s += 2;
+        }
+
+        copy(begin(tmp), end(tmp), begin(arr));
+    }
 }

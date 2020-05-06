@@ -39,6 +39,15 @@ namespace rearrangement {
 
     template<class T, class LN = int>
     LN bring_less_number_together_min_swap(T[], LN);
+
+    template<class T, class LN = int>
+    void rearrange_positive_negative_separated_inbuilt_sort(T[], LN);
+
+    template<class T, class LN = int>
+    void rearrange_even_greater_than_odd(T[], LN);
+
+    template<class T, class LN = int>
+    void rearrange_sort_and_display_between_interval(T[], LN);
 }
 
 #endif
