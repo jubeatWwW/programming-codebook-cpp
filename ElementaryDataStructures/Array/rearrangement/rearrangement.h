@@ -48,6 +48,21 @@ namespace rearrangement {
 
     template<class T, class LN = int>
     void rearrange_sort_and_display_between_interval(T[], LN);
+
+    template<class T, class LN = int>
+    void double_first_element_and_move_zero_to_end(T[], LN);
+
+    template<class T, class LN = int>
+    void reorder(T[], LN[], LN);
+
+    template<class T, class LN = int>
+    void rearrange_pos_neg_to_each_side(T[], LN);
+
+    template<class LN = int>
+    void numbers_forms_biggest_number(string[], LN);
+
+    template<class LN = int>
+    void rearrange_arr_i_to_j(int[], LN);
 }
 
 #endif

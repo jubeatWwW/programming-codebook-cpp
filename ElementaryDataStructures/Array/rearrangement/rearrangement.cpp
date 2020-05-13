@@ -225,12 +225,92 @@ namespace rearrangement {
         LN s = 0;
 
         for (LN i = 0, j = n - 1;
-            i <= mid || j > mid; i += 1, j -= 1) {
+            i <= mid || j > mid;
+            i += 1, j -= 1) {
             tmp[s] = arr[i];
             tmp[s + 1] = arr[j];
             s += 2;
         }
 
         copy(begin(tmp), end(tmp), begin(arr));
+    }
+
+    // https://www.geeksforgeeks.org/double-first-element-move-zero-end/
+    template<class T, class LN = int>
+    void double_first_element_and_move_zero_to_end(T arr[], LN n) {
+        LN non_zero_flag = -1;
+        for (LN i = 0; i < n - 1; i += 1) {
+            if (arr[i]) {
+                if (arr[i] == arr[i + 1]) {
+                    arr[i] *= 2;
+                    arr[i + 1] = 0;
+                }
+                if (i > non_zero_flag) {
+                    swap(arr[non_zero_flag + 1], arr[i]);
+                    non_zero_flag += 1;
+                }
+            }
+        }
+        if (arr[n - 1] && n - 1 > non_zero_flag) {
+            swap(arr[non_zero_flag + 1], arr[n - 1]);
+        }
+    }
+
+    // https://www.geeksforgeeks.org/reorder-a-array-according-to-given-indexes/
+    template<class T, class LN = int>
+    void reorder(T arr[], LN index[], LN n) {
+        for (LN i = 0; i < n; i += 1) {
+            while(index[i] != i) {
+                swap(arr[index[i]], arr[i]);
+                swap(index[index[i]], index[i]);
+            }
+        }
+    }
+
+    // https://www.geeksforgeeks.org/rearrange-positive-and-negative-numbers/
+    template<class T, class LN = int>
+    void rearrange_pos_neg_to_each_side(T arr[], LN n) {
+        LN neg_index = 0;
+
+        if (LN i = 0; i < n; i += 1) {
+            if (arr[i] > 0) {
+                continue;
+            }
+
+            if (neg_index < i) {
+                swap(arr[i], arr[neg_index]);
+            }
+            neg_index += 1;
+        }
+    }
+
+    template<class LN = int>
+    void numbers_forms_biggest_number(string nums[], LN n) {
+        sort(nums, nums + n, [](string s1, string s2) {
+            string c1 = s1.append(s2);
+            string c2 = s2.append(s1);
+
+            return c1.compare(c2);
+        });
+    }
+
+    // https://www.geeksforgeeks.org/rearrange-array-arrj-becomes-arri-j/
+    template<class LN = int>
+    void rearrange_arr_i_to_j(int arr[], LN n) {
+        for (LN i = 0; i < n; i += 1) {
+            int next_pos = arr[i];
+            int val = -i - 1; // minus 1 to avoid 0
+            while (arr[next_pos] >= 0) {
+                int cur_pos = next_pos;
+                next_pos = arr[next_pos];
+
+                arr[cur_pos] = val;
+                val = -cur_pos - 1;
+            }
+        }
+
+        for (LN i = 0; i < n; i += 1) {
+            arr[i] = abs(arr[i] + 1);
+        }
     }
 }
